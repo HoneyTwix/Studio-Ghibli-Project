@@ -136,22 +136,38 @@ ghibliName.className = "ghibli";
 fetchButton.addEventListener("click", function() {
   fetchButton.classList.add("hide");
   saveResults.classList.remove("hide");
-  finalQuestion.textContent = "Save Your Results!";
+  finalQuestion.textContent = "Hope You Had Fun!";
   document.getElementById("question").append(saveResults);
 })
 
 function saveData(){
+  array = ['']
   var save_button = document.getElementById("name-save").value
   var save_Button = JSON.stringify(save_button)
   localStorage.setItem("data",save_Button)
+  var ghibliSave = JSON.stringify(ghibliName)
+  localStorage.setItem('dataTwo', ghibliSave)
+  var imageSave = JSON.stringify(image.src)
+  localStorage.setItem('dataThree', imageSave)
+  array.push(save_Button)
+  array.push(ghibliSave)
+  array.push(imageSave)
+  console.log(array)
 }
 
 function getData(){
     if (localStorage.getItem('data') == null){
         localStorage.setItem('data', '');}
+    if (localStorage.getItem('dataTwo') == null){
+        localStorage.setItem('dataTwo', '');}
+    if (localStorage.getItem('dataTwo') == null){
+        localStorage.setItem('dataTwo', '');}
     var saver = JSON.parse(localStorage.getItem('data'))
+    var ghiblisaved = JSON.parse(localStorage.getItem('dataTwo'))
+    var imageSaved = JSON.parse(localStorage.getItem('dataThree'))
     // console.log(saver)
     document.getElementById('name-save').innerHTML= saver
+    
 }
 
 
